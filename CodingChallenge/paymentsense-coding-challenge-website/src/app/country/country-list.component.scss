@@ -1,0 +1,51 @@
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.card {
+    width: 100%;
+}
+
+.flagDisplay {
+    width: 100%;
+    border:3px;
+    //background-color: lightgray;
+}
+
+img{
+    width: 75px;
+    height: 45px;
+}
+
+mat-cell {
+    padding: 10px;
+    border-spacing: 5px;
+   
+}
+
+td {
+    padding: 5px;
+    border-spacing: 5px;
+   
+}
+
+
+card-footer {
+    padding: 5px;
+    border-spacing: 5px;
+}
+
+mat-card{
+    width: 70%;
+    //height: 400px;
+   // display: block;
+    margin-left:auto;
+    margin-right:auto;  
+    vertical-align:middle;
+    
+}

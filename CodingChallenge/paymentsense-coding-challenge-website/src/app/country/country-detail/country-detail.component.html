@@ -1,0 +1,103 @@
+
+
+    <mat-card>
+       <mat-card-header>
+         <div>
+          <h3 >{{title | uppercase}} - Country Details</h3>
+        
+         </div>
+       </mat-card-header>
+       <mat-card-content>
+        
+        
+         <table mat-table [dataSource]="dataSource">
+           
+           <ng-container matColumnDef="name">
+               <mat-header-cell *matHeaderCellDef><b>Name </b> </mat-header-cell>
+               <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+           </ng-container>
+
+           <ng-container matColumnDef="capital">
+            <mat-header-cell *matHeaderCellDef><b>Capital </b> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.capital}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="population">
+            <mat-header-cell *matHeaderCellDef> <b>Population </b> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.population | number}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="borders">
+            <mat-header-cell *matHeaderCellDef><b>Borders </b> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+
+                <ng-container *ngFor="let border of element.borders">
+                    {{border}}<br /> 
+                </ng-container>
+
+
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="timezones">
+            <mat-header-cell *matHeaderCellDef><b>Time Zones </b> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+
+                <ng-container *ngFor="let time of element.timezones">
+                    {{time}}<br /> 
+                                     
+                </ng-container>
+
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="currencies">
+            <mat-header-cell *matHeaderCellDef><b>Currencies </b> </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+
+            <ng-container *ngFor="let currency of element.currencies">
+            Name: {{currency.name}}<br /> 
+            Code: {{currency.code}}<br />
+            Symbol: {{currency.symbol}} <br /> <br />
+           
+        </ng-container>
+            </mat-cell>
+
+        </ng-container>
+        <ng-container matColumnDef="languages">
+            <mat-header-cell *matHeaderCellDef><b>Languages </b> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <ng-container *ngFor="let language of element.languages">
+                       Name:       {{language.name}}  <br /> 
+                       NativeName:  {{language.nativeName}}  <br /> <br />
+                </ng-container>
+
+
+            </mat-cell>
+        </ng-container>
+                  
+           <ng-container matColumnDef="flag">
+               <mat-header-cell *matHeaderCellDef><b>Flag</b></mat-header-cell>
+               <mat-cell class="flagDisplay" *matCellDef="let element"> <img [src]="element.flag" />  </mat-cell>
+           </ng-container>
+   
+            
+   
+            
+           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+       </table>
+          
+       </mat-card-content>
+     
+
+     <mat-card-actions>            
+        <div class="btn-group">
+           <button class="btn btn-primary btn-group" (click)="onBackToList()">Back to List</button>
+        </div>
+     </mat-card-actions>
+</mat-card>
+   
+   
+   
+   

@@ -1,0 +1,53 @@
+ <mat-card>
+    <mat-card-header>
+      <div>
+     <h3 >Countries</h3>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+     
+      <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search Countries" #input>
+      </mat-form-field>
+      <table mat-table [dataSource]="dataSource" matSort>
+        
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header><b>Name </b> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+               
+        <ng-container matColumnDef="flag">
+            <mat-header-cell *matHeaderCellDef><b>Flag</b></mat-header-cell>
+            <mat-cell class="flagDisplay" *matCellDef="let element"> <img [src]="element.flag"  />  </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef><b>Actions</b></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a matLine [routerLink]="['/country-detail', element.name]">
+                                    <mat-icon matToolTip="Details" matListItem>zoom_in</mat-icon>
+                                </a>
+                            </td>
+                           
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-cell>
+        </ng-container>        
+
+         
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
+</mat-card-content>
+    <mat-card-actions>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20, 30]" showFirstLastButtons></mat-paginator>
+    
+</mat-card-actions>
+</mat-card>
+
